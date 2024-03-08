@@ -1,0 +1,216 @@
+---
+title: "**Statistiques descriptives et esquisse de plan d'exposé**"
+author: "*Coulibaly_Khadidiatou*"
+date: "2024-03-07"
+output: 
+  pdf_document: 
+    highlight: kate
+---
+
+```{r setup, echo=FALSE, warning=FALSE}
+
+library("kableExtra")
+library("knitr")
+library("questionr")
+# Voici notre bas de données
+Base <- data.frame(col1=c("+221","+223","+222","+224","+261","+237"), col2=c("Dakar","Bamako","Nouakchott","Conakry","Antananarivo","Douala"), col3=c(18, 16.7, 4.5, 13.1, 27.7, 26.5), col4=factor(c("Low","Low","Low","Med","Low","High"), levels=c("High","Med","Low")), col5=c(14,19, 13, 8, 22, 10), col6=c(19,13,13,7,13,3))
+
+#Créer une matrice à partir données et renommenr les lignes et les colonnes
+Matr_base <- as.matrix(Base)
+rownames(Matr_base) <- c("Pays1","Pays2","Pays3","Pays4","Pays5", "Pays6")
+colnames(Matr_base) <- c("Identif-phone","Centre_Activités","Pop (millions)","Niveau_vie","Nb_régions", "First_letter")
+
+
+#Ajout d'observations
+
+for (i in 1:42) {
+  Pays7 <- c("+228", "Yamoussoukro",27, "High", 12, 25)
+  Matr_base <- rbind(Matr_base, Pays7)
+  
+  Pays8 <- c(paste("+", 230+i), "Dakar", 18,"Low", 10, 5)
+  Matr_base <- rbind(Matr_base, Pays8)
+  
+  Pays9 <- c(paste("+", 230+i), "Yaoundé",17,"High", 8, 7)
+  Matr_base <- rbind(Matr_base, Pays9)
+  
+  Pays10 <- c(paste("+", 230+i),"Porto_Novo",18,"Med",9,15)
+  Matr_base <- rbind(Matr_base,  Pays10)
+  
+  Pays11 <- c(paste("+", 230+i),"Douala", 11,"High", 10, 19)
+  Matr_base <- rbind(Matr_base,Pays11)
+  
+  Pays12 <- c(paste("+", 230+i), "New York", 15,"Low",17, 23)
+  Matr_base <- rbind(Matr_base, Pays12)
+  
+  Pays13 <- c(paste("+", 230+i),"Luxelbourg", 18, "High", 18, 20)
+  Matr_base <- rbind(Matr_base, Pays13)
+ My_data <- as.data.frame(Matr_base) 
+}
+
+# Ajout de colonnes...
+
+Var7 <- rep(c("A","A","D","B","C","D","E","E","B","C"), 30)
+Matr_base <- cbind(Matr_base, Var7)
+
+IDH <- rep(c(0.4,0.6,0.5,1,0.9,0.3,0.7,0.6,0.5,0.7), 30)
+Matr_base <- cbind(Matr_base, IDH)
+
+Dette <- rep(c("Endetté", "Peu endetté","Très endetté","Très endetté","Peu endetté","Endetté"),50)
+Matr_base <- cbind(Matr_base, Dette)
+
+Secteur_Dominant <- rep(c("Primaire","Secondaire","Tertiaire","Secondaire","Primaire","Tertiaire","Tertiaire","Secondaire","Primaire", "Secondaire"),30)
+Matr_base <- cbind(Matr_base, Secteur_Dominant)
+
+Situation <- rep(c("Nord", "Sud","Equateur","Nord", "Sud","Equateur", "Sud", "Equateur", "Sud","Nord"),30)
+Matr_base <- cbind(Matr_base, Situation)
+
+Sexe_Dominant <- rep(c("H","F","F","H","H","F"), 50)
+Matr_base <- cbind(Matr_base, Sexe_Dominant)
+
+Solde_Commercial_millions <- rep(c(-100, -150,-87,-30,-20,-10), 50)
+Matr_base <- cbind(Matr_base, Solde_Commercial_millions)
+
+Etat_BC <- rep(c("Equilibrée","Déficitaire", "Excédentaire"), 100)
+Matr_base <- cbind(Matr_base, Etat_BC)
+
+Temps_doublement_ans <- rep(c(8,7,10,14,19,20), 50)
+Matr_base <- cbind(Matr_base, Temps_doublement_ans)
+
+#_____On renomme les lignes
+
+rownames(Matr_base) <- c(paste0("Pays", 1:300))
+My_data <- as.data.frame(Matr_base)
+
+My_data$`Pop (millions)` <-as.numeric(My_data$`Pop (millions)`)
+My_data$Solde_Commercial_millions <- as.numeric(My_data$Solde_Commercial_millions)
+
+```
+
+
+# A. **Calcul de certaines statistiques descriptives**
+
+- Statistiques concernant la taille de la population:
+
+```{r, highlight=TRUE, background=TRUE, echo=FALSE}
+sumr <-summary(My_data$`Pop (millions)`)
+sumr <- as.matrix(sumr)
+colnames(sumr) <- "  Valeurs  "
+rownames(sumr) <- c("Minimum     ","Quartile 1     ", "Médiane     ","Quartile 3     ","Moyenne   ", "Maximum     ")
+#kable(sumr)
+
+kable(sumr, table.attr = "style='width:40%;'", digits = 1) %>% kable_classic(full_width = F,
+position = "center" )
+
+```
+
+
+- Statistiques concernant le solde de la balance commercial:
+
+```{r highlight=TRUE, echo=FALSE}
+
+sumr <-summary(My_data$Solde_Commercial_millions)
+sumr <- as.matrix(sumr)
+
+colnames(sumr) <- "  Valeurs  "
+rownames(sumr) <- c("Minimum     ","Quartile 1     ", "Médiane     ","Quartile 3     ","Moyenne   ", "Maximum     ")
+kable(sumr, digits = 1)
+```
+
+
+# B. **Quelques tableaux...**
+
+Voyons une répartition des pays en fonction du niveau de vie.
+
+```{r Niveau_vie, echo=FALSE}
+
+t <- freq(My_data$Niveau_vie, valid=FALSE)
+kable(t, caption = "Répartition des pays en fonction du niveau de vie", col.names = c("Niveau de vie", "Pourcentage de pays"))
+
+```
+
+
+Voyons une répartition des pays en fonction du sexe dominant.
+
+
+```{r Sexe dominant,echo=FALSE}
+
+
+kable(freq(My_data$Sexe_Dominant, valid=FALSE), caption="Répartition des pays en fonction du sexe dominant", col.names = c("Sexe", "Pourcentage de pays"))
+
+```
+
+
+
+En croisant le secteur dominant à la situation géographique, on obtient le tableau suivant:
+
+
+```{r Tableau_Croisé, echo=FALSE} 
+
+tab <- table(My_data$Secteur_Dominant , My_data$Situation)
+Total <- rowSums(tab)
+tab <- cbind(tab,Total)
+
+Total <- colSums(tab)
+table <- rbind(tab,Total)
+kable(tab, caption="Tableau croisé")
+
+```
+
+
+# C. **Quelques représentations graphiques...**
+
+Il serait intéressant de construire un nuage de points pour étudier la relation entre la population (en millions) et le temps de dédoublement de celle-ci.
+
+```{r nuage, echo=FALSE, fig.height = 4}
+plot(My_data$`Pop (millions)`, My_data$Temps_doublement_ans, main="Nuage de points entre la population et le temps de dédoublement", xlab= "Population", ylab="Temps de dédoublment", col="blue")
+```
+
+
+A la vue d'un tel nuage, il est évident qu'il n'y a pas de relation linéaire entre la taille de population et le temps de dédoublement.
+
+Et si l'on regardait de plus près le niveau d'endettement des pays ? Quelle est l'improtance de leurs dettes ?
+
+
+```{r , echo=TRUE, highlight=TRUE, fig.height = 4}
+#Pour cette opération, nous avons choisi d'afficher le code.
+pie(table(My_data$Dette),labels =names(table(My_data$Dette)) ,
+main="Niveau d'endettement des pays", col=c("yellow","blue", "purple" ))
+```
+Il apparait alors une égale distribution du niveau d'endettement.
+
+Pourquoi ne pas nous intéresser à l'IDH des différents pays ?
+Quelle valeur de l'indice est la plus occurente ?
+Le diagramme en barres ci-dessous nous donne la réponse à la question.
+
+
+```{r highlight=TRUE, fig.height =3.5, echo=FALSE}
+barplot(sort(table(My_data$IDH), decreasing = TRUE), 
+main="diagramme en barres de l'IDH", xlab="Valeur de l'IDH",
+ylab="Nombre de pays", col="lightblue")
+```
+
+
+Nous remarquons que l'IDH prend un nombre fini de valeurs.
+
+
+*C'est sur ce graphique que nous terminons nos analyses.*
+
+# D. Esquisse de plan sur l'exposé sur le thème : _**Statistiques descriptives et visualisation des variables catégorielles avec ggplot2**_
+
+Nous proposons l'esquisse de plan suivante :
+
+
+## 1. Présentation générale d'une variable catégorielle
+
+Il s'agira de donner la définition, caractéristiques...
+
+## 2. Analyses et tests possibles
+On parlera des statistiques descriptives et tests statistiques possibles  avec une variable catégotrielle.
+
+## 3. Représentations graphiques:
+On présentera les différentes représentations graphiques et leur l'implémentation su R, notamment avec ggplot.
+
+## 4. Cas pratiques
+On utilisera des bases de données pour un usage des outils présentés.
+
+**NB:** Les exposants sont *Samba Dieng* et *Khadidiatou Coulibaly*.
