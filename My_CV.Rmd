@@ -1,0 +1,120 @@
+---
+title: "COULIBALY Khadidiatou's resume"
+author: COULIBALY Khadididatou
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+# uncomment this line to produce HTML and PDF in RStudio:
+knit: pagedown::chrome_print
+---
+
+```{r include=FALSE}
+# This template use pagedown package, so please install it!
+library(pagedown)
+```
+
+# Aside
+
+![Coulibaly Khadidiatou](C:/Users/DELL/Pictures/KC/IMG-20230517-WA0009.jpg){width="77%"}
+
+## Contact Info {#contact}
+
+-   <i class="fa fa-envelope"></i> [coulibalykhadidiatou123400\@gmail.com](mailto:coulibalykhadidiatou123400@gmail.com){.email}
+-   <i class="fa fa-github"></i> [github.com/Khadija123400](https://github.com/Khadija123400)
+-   <i class="fa fa-phone"></i> +221 77 224 21 17
+-   For more information, please contact me via email.
+
+## Skills {#skills}
+
+-   Experienced in statistical analysis, statistical learning models, and optimization methods.
+
+-   Experienced with next generation sequencing data analysis.
+
+-   Highly skilled in R, VBA Excel, SPSS, Python, Stata, C/C++, Eviews
+
+-   Good a licence degree in Hacking and Cybersecurity
+
+# Main
+
+## Coulibaly Khadidiatou {#title}
+
+### Currently searching for an internship at ANSD
+
+## Education {data-icon="graduation-cap" data-concise="true"}
+
+### Junior High and High School
+
+Mariama Ba High School Excellence
+
+Gorée, Dakar
+
+2015 - 2022
+
+### Studying Engineering in Statistics and Economics
+
+ENSAE Pierre Ndiaye, Dakar
+
+Colobane Bel Air, Dakar
+
+2023-2026
+
+## Internships and certifications {data-icon="laptop"}
+
+### Data Analyst Assistant at SONATEL
+
+National Telecommunication Agency
+
+Saint-Louis
+
+2024
+
+- Operated Big Data processing with clients Data Sets
+- Designed forecasting models for data driven decision making, using cutting edge machine learning methods
+
+### Software Engineer assistant at ATOS
+
+Summer vacation training
+
+ATOS Mermoz, Dakar
+
+2025
+
+- Managed the first Hackaton competition organized by ATOS
+- Helped to develop several software systems for a better organisation of HR department
+
+### Online Certified Courses
+
+All certified and obtained further to an examination
+
+
+
+2023-2025
+
+-   Certificate in C mastery, by Openclassroom
+-   Certificate in QGIS mastery
+-   Certificate in white Hat Hacking, by UVS
+
+## Further information
+
+### Linguistic Competences {data-icon="chalkboard-teacher"}
+
+Learnt at home, school or in the US
+
+Dakar, Sénégal
+
+
+
+
+
+-   French : Very good level
+-   English : Very good level
+-   Wolof : Fairly good level
+
+### LEISURE ACTIVITIES
+
+-   Taekwondo, upper blue belt
+-   Chess,Sudoku
+-   Reading
+-   Coding Games

@@ -1,0 +1,35 @@
+---
+title: "A letter of recommendation for Emi Tanaka"
+author: "Yihui Xie"
+output:
+  pagedown::html_letter:
+    self_contained: false
+# uncomment this line to produce HTML and PDF in RStudio:
+knit: pagedown::chrome_print
+---
+
+::: from
+Coulibaly Khadidiatou\
+Lot 47, VDN, Teylium district, Ouest foire Dakar\
+Email: coulibalykhadidiatou123400\@gmail.com
+:::
+
+ANSD Colobane, The Director\
+
+::: date
+March 12, 2024
+:::
+
+Mr The Director of ANSD,
+
+I am writing to express my interest in getting an internship as a trainee in your organisation.
+
+I have just graduated with honors from ENSAE, as an engineer in Statistics and Economics. During my studies, I developed strongs foundations Data analysis and Machine Learning algorithms. My previous internships helped me gain extensive knowledge about economics modeling. Please find in the enclosed C.V. all the details about my qualifications and experience.
+
+Moreover, I possess excellent communication skills that help me easily collaborate with your agents, so that I will be able to leanr from them and improve my skills.
+
+I truly see this intership as a way to earn my stripes as a statistician and I am looking forward to receiving a positive answer. Thank you for your time and consideration.
+
+\
+Coulibaly Khadidiatou\
+Students at ENSAE Pierre Ndiaye
