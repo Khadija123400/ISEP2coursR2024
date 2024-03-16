@@ -112,6 +112,16 @@ slice_min(cereales[cereales$Unite_cons==100 & cereales$cereales__id == 3],cereal
 
 
 
+### QUEstion Omise, my sincere apologies sir... : Essayer de merger la base céréale avec la table de conversion---------------------------
+# Nous choisissons de prendre la table de conversion au niveau national et utilisons 3 clés
+
+table_conv <- read_xlsx("Table de conversion phase 2.xlsx", sheet = "nationale")
+names(table_conv)
+names(cereales)
+ cereales <- left_join(cereales, table_conv, by= c("cereales__id"= "produitID", "Unite_cons"="uniteID", "Taille_cons"="tailleID"))
+View(cereales)
+
+
 
 
 
