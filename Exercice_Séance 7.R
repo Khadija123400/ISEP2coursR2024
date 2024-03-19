@@ -74,8 +74,7 @@ View(cereales)
 
 
 
-# Nous avions déjà fait une jointure des deux bases avec left_join (qui est d'ailleurs 
-# car nous devions utiliser right_join en fait) lors du homework précédent
+# Nous avions déjà fait une jointure des deux bases avec left_join
 # Nous allons donc le faire ici avec merge.-----------------------------------------------------------
 
 
