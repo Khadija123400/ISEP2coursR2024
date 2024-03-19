@@ -31,7 +31,7 @@ colnames(cereales)[4:14] <- c("AutresCereales","Qtty_cons",
 ## Renommer, créer, labeliser, recoder les variables
 
 # On regroupe les variables à recoder dans une liste
-to_rec # To rec sera  donc la liste des variables à recoder
+# To rec sera  donc la liste des variables à recoder
 to_rec <- list()
 for (i in names(cereales)){
   if(is.null(attr(cereales[[i]], "labels"))== 0){ # On met deux crochets pour préciser que c'est la colonne que l'on veut
@@ -85,8 +85,8 @@ names(table_conv) <- c("produitID",  "Var_rec_cereales__id" ,"uniteID" ,  "Var_r
                         "...9")
 # On fusionne les bases;
 
-cereales <- merge(cereales, table_conv, by= c("Var_rec_cereales__id", "Var_rec_Unite_cons", "Var_rec_Taille_cons"))
-
+cereales <- merge(cereales, table_conv, by= c("Var_rec_cereales__id", "Var_rec_Unite_cons", "Var_rec_Taille_cons"), all.x= TRUE)
+# A noter que la variable poids génère 8425 NA avec cet code...
 View(cereales)
 
 
