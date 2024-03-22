@@ -98,7 +98,7 @@ cereales_imp[cereales__id %in% c(1,2,3,4),
 
 median(cereales_imp[cereales__id %in% c(1,2,3,4), Qtty_cons[-ind_max]], na.rm = T)
 
-#'La valeur de la médiane ci-dessus est de 13.5
+#'La valeur de la médiane ci-dessus est de 13.5, valeur proche de la moyenne
 #'Ainsi, une imputation par la médiane donnerait un résultat similaire
 
 
