@@ -112,4 +112,4 @@ median(cereales_imp[cereales__id %in% c(1,2,3,4), Qtty_cons[-ind_max]], na.rm = 
 #'La valeur de la médiane ci-dessus est de 13.5 contre 13.38078 pour la moyenne.
 #'Ainsi, une imputation par la médiane donnerait un résultat similaire
 
-
+### _____________________FIN FIN FIN FIN FIN FIN FIN _________________________________________________________________
